@@ -1,0 +1,22 @@
+name: PrisonEco
+main: io.github.muricans.prisoneco.PrisonEco
+version: ${project.version}
+description: ${project.description}
+website: ${project.url}
+author: Muricans
+depend:
+  - murAPI
+  - PrisonTools
+commands:
+  balance:
+    usage: /<command>
+    description: Gets your current balance.
+    aliases: [bal]
+  setbalance:
+    usage: /<command> <newBalance>
+    description: Sets a balance for yourself.
+    aliases: [setbal]
+    permission: prison.setbalance
+  sell:
+    usage: /<command>
+    description: Sells sellable items in your inventory.

@@ -1,0 +1,33 @@
+name: PrisonTools
+main: io.github.muricans.prisontools.PrisonTools
+version: ${project.version}
+author: Muricans
+description: ${project.description}
+website: ${project.url}
+depend: [murAPI]
+loadbefore: [PrisonEco]
+commands:
+  rankup:
+    usage: /<command>
+    description: Ranks you to the next rank if you have the balance for it.
+  world:
+    usage: /<command>
+    description: Teleports you to your own mining world.
+  resetworld:
+    usage: /<command>
+    description: Resets your mining world and generates a new one.
+  sethome:
+    usage: /<command> [homeName]
+    description: Sets a home that you can teleport to.
+  home:
+    usage: /<command> [homeName]
+    description: Teleports you to your home.
+  homes:
+    usage: /<command>
+    description: Lists all homes you own.
+  delhome:
+    usage: /<command> [home]
+    description: Deletes a home of yours.
+  rank:
+    usage: /<command>
+    description: Gets your current rank.

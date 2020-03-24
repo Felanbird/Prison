@@ -1,0 +1,10 @@
+#cooldown: seconds
+#wait: seconds
+commands:
+  home:
+    cooldown: 60
+    wait: 3
+  resetworld:
+    cooldown: 600
+  world:
+    wait: 3
