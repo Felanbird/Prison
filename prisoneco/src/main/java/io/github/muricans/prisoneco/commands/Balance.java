@@ -1,5 +1,6 @@
 package io.github.muricans.prisoneco.commands;
 
+import io.github.muricans.murapi.api.Color;
 import io.github.muricans.murapi.api.cmd.CMD;
 import io.github.muricans.prisoneco.PrisonEco;
 import io.github.muricans.prisontools.PrisonTools;
@@ -27,7 +28,7 @@ public class Balance implements CMD {
             } else {
                 Player target = Bukkit.getServer().getPlayer(args[0]);
                 if(target == null) {
-                    sender.sendMessage("Could not find that player! Are they online?");
+                    sender.sendMessage(Color.addColor("Could not find that player! Are they online?"));
                     return true;
                 }
                 double balance = PrisonTools.instance.database.getBalance(target.getUniqueId().toString());

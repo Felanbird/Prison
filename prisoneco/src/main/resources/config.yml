@@ -12,3 +12,7 @@ prices:
   REDSTONE_ORE: 75
   EMERALD: 2000
   EMERALD_ORE: 10000
+pickaxe:
+  leveling:
+    blocks: 500
+    multiplier: 2

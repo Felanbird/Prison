@@ -5,6 +5,9 @@ import io.github.muricans.murapi.api.config.Config;
 import io.github.muricans.prisoneco.commands.Balance;
 import io.github.muricans.prisoneco.commands.Sell;
 import io.github.muricans.prisoneco.commands.SetBalance;
+import io.github.muricans.prisoneco.pickaxe.BlockBreakListener;
+import io.github.muricans.prisoneco.pickaxe.CraftingListener;
+import io.github.muricans.prisoneco.pickaxe.EnhancedPickaxe;
 import io.github.muricans.prisoneco.listeners.BuySignListener;
 import io.github.muricans.prisoneco.listeners.SellSignListener;
 import io.github.muricans.prisoneco.util.AccountDatabase;
@@ -37,9 +40,13 @@ public final class PrisonEco extends JavaPlugin implements Listener {
         config.loadFromJar();
         config.save();
 
+        EnhancedPickaxe.initiate(this);
+
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         Bukkit.getServer().getPluginManager().registerEvents(new BuySignListener(this), this);
         Bukkit.getServer().getPluginManager().registerEvents(new SellSignListener(this), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new CraftingListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
     }
 
     public static String formatBalance(double balance) {
