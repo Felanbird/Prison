@@ -24,15 +24,15 @@ public class Balance implements CMD {
         try {
             if(args.length == 0) {
                 double balance = PrisonTools.instance.database.getBalance(((Player) sender).getUniqueId().toString());
-                sender.sendMessage("Your balance is: $" + PrisonEco.formatBalance(balance));
+                sender.sendMessage(Color.addColor("Your balance is: &2$&6") + (PrisonEco.formatBalance(balance)));
             } else {
                 Player target = Bukkit.getServer().getPlayer(args[0]);
                 if(target == null) {
-                    sender.sendMessage(Color.addColor("Could not find that player! Are they online?"));
+                    sender.sendMessage(Color.addColor("&cCould not find that player! Are they online?"));
                     return true;
                 }
                 double balance = PrisonTools.instance.database.getBalance(target.getUniqueId().toString());
-                sender.sendMessage("Balance of " + target.getName() + " is: $" + PrisonEco.formatBalance(balance));
+                sender.sendMessage("Balance of &9" + target.getName() + "&r is: &2$&6" + PrisonEco.formatBalance(balance));
             }
         } catch (SQLException e) {
             e.printStackTrace();

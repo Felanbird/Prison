@@ -50,7 +50,7 @@ public class Sell implements CMD {
                 }
             }
             PrisonTools.instance.database.setBalance(player.getUniqueId().toString(), balance);
-            player.sendMessage("Sold items for +$" + PrisonEco.formatBalance(balance - oldBalance) + "\nNew balance is: $" + PrisonEco.formatBalance(balance));
+            player.sendMessage("Sold items for +&2$&6" + PrisonEco.formatBalance(balance - oldBalance) + "\n&rNew balance is: &2$&6" + PrisonEco.formatBalance(balance));
         } catch (SQLException e) {
             e.printStackTrace();
         }

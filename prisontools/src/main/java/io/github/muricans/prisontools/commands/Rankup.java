@@ -29,10 +29,10 @@ public class Rankup implements CMD {
             double balance = (double) plugin.database.getBalance(player.getUniqueId().toString());
             RankHandler rankHandler = plugin.nextRanks.get(player.getUniqueId());
             if(balance >= rankHandler.getPrice()) {
-                sender.sendMessage("Ranked up");
+                sender.sendMessage("&3&lRanked up");
                 rankHandler.rankup(player.getUniqueId().toString());
             } else {
-                sender.sendMessage("Not enough money in your balance");
+                sender.sendMessage("&cNot enough money in your balance");
             }
         } catch (SQLException e) {
             e.printStackTrace();
