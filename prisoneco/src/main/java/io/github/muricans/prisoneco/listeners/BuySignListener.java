@@ -76,9 +76,9 @@ public class BuySignListener implements Listener {
                     double price = Double.valueOf(sign.getLine(2).substring(1));
                     boolean success = buySign.buy(ePlayer);
                     if(success) {
-                        e.getPlayer().sendMessage("Bought item -&2$&6" + PrisonEco.formatBalance(price) + "\n&rNew balance: &2$&6" + PrisonEco.formatBalance(currentBal - price));
+                        e.getPlayer().sendMessage(Color.addColor("Bought item -&2$&6" + PrisonEco.formatBalance(price) + "\n&rNew balance: &2$&6" + PrisonEco.formatBalance(currentBal - price)));
                     } else {
-                        e.getPlayer().sendMessage("&cCould not buy item!");
+                        e.getPlayer().sendMessage(Color.addColor("&cCould not buy item!"));
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();

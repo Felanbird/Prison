@@ -35,7 +35,7 @@ public class SetHome implements CMD {
         homes.set(player.getUniqueId().toString() + "." + name + ".y", player.getLocation().getBlockY());
         homes.set(player.getUniqueId().toString() + "." + name + ".z", player.getLocation().getBlockZ());
         homes.reload();
-        player.sendMessage("New home with the name of '" + name + "' has been set!");
+        player.sendMessage(Color.addColor("&eNew home with the name of '" + name + "' has been set!"));
         return false;
     }
 }

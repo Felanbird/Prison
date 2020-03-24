@@ -26,16 +26,16 @@ public class Homes implements CMD {
         if(!(sender instanceof Player)) return true;
         Player player = (Player) sender;
         if(plugin.homes.get(player.getUniqueId().toString()) == null) {
-            player.sendMessage("You have not yet set any homes!");
+            player.sendMessage(Color.addColor("&cYou have not yet set any homes!"));
             return true;
         }
         Set<String> playerHomes = plugin.homes.getFile().getConfigurationSection(player.getUniqueId().toString()).getKeys(false);
         if(playerHomes == null) {
-            player.sendMessage("You have not yet set any homes!");
+            player.sendMessage(Color.addColor("&cYou have not yet set any homes!"));
             return true;
         }
         String homes = StringUtils.join(playerHomes, ", ");
-        player.sendMessage("Homes:\n" + homes);
+        player.sendMessage(Color.addColor("Homes:\n&e" + homes));
         return false;
     }
 }

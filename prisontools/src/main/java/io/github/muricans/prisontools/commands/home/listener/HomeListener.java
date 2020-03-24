@@ -20,7 +20,7 @@ public class HomeListener implements Listener {
                 BukkitTask task = tasks.get(e.getPlayer().getUniqueId());
                 task.cancel();
                 tasks.remove(e.getPlayer().getUniqueId());
-                e.getPlayer().sendMessage("Teleportation canceled, you cannot move while being teleported!");
+                e.getPlayer().sendMessage(Color.addColor("&cTeleportation canceled, you cannot move while being teleported!"));
             }
         }
     }

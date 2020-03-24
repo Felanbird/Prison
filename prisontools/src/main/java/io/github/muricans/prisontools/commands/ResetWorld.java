@@ -39,14 +39,14 @@ public class ResetWorld implements CMD {
         int time = config.getInt("commands.resetworld.cooldown");
         Cooldown cooldown = Util.hasCooldown(cooldowns, player.getUniqueId(), time);
         if(cooldown.hasCooldown()) {
-            player.sendMessage("Please wait &b" + cooldown.getTimeLeft() + " &rmore seconds before using this command again!");
+            player.sendMessage(Color.addColor("Please wait &b" + cooldown.getTimeLeft() + " &rmore seconds before using this command again!"));
             return true;
         }
         if(Bukkit.getWorld(player.getUniqueId().toString()) == null){
-            player.sendMessage("&lYou haven't created a world yet! Type /world to make one.");
+            player.sendMessage(Color.addColor("&lYou haven't created a world yet! Type /world to make one."));
         } else {
             World playerWorld = Bukkit.getServer().getWorld(player.getUniqueId().toString());
-            player.sendMessage("&oBeginning deletion of world...");
+            player.sendMessage(Color.addColor("&oBeginning deletion of world..."));
             for(Player pl : playerWorld.getPlayers()) {
                 pl.teleport(Bukkit.getServer().getWorld("world").getSpawnLocation());
             }
@@ -57,7 +57,7 @@ public class ResetWorld implements CMD {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            player.sendMessage("&c&oWorld deleted...");
+            player.sendMessage(Color.addColor("&c&oWorld deleted..."));
             player.performCommand("world");
             cooldowns.put(player.getUniqueId(), System.currentTimeMillis());
         }

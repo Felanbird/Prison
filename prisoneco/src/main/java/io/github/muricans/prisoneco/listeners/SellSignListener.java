@@ -76,9 +76,9 @@ public class SellSignListener implements Listener {
                     double price = Double.valueOf(sign.getLine(2).substring(1));
                     boolean success = sellSign.sell(ePlayer);
                     if(success) {
-                        e.getPlayer().sendMessage("Sold item for +&2$&6" + PrisonEco.formatBalance(price) + "\n&rNew balance: &2$&6" + PrisonEco.formatBalance(currentBal + price));
+                        e.getPlayer().sendMessage(Color.addColor("Sold item for +&2$&6" + PrisonEco.formatBalance(price) + "\n&rNew balance: &2$&6" + PrisonEco.formatBalance(currentBal + price)));
                     } else {
-                        e.getPlayer().sendMessage("&cCould not sell item!");
+                        e.getPlayer().sendMessage(Color.addColor("&cCould not sell item!"));
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();

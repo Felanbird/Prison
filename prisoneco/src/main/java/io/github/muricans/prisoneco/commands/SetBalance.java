@@ -33,38 +33,38 @@ public class SetBalance implements CMD {
     public boolean execute(CommandSender sender, Command command, String label, String[] args) {
         if(!(sender instanceof Player)) return true;
         if(!NumberUtils.isNumber(args[0])) {
-            sender.sendMessage("&cPlease use numbers!");
+            sender.sendMessage(Color.addColor("&cPlease use numbers!"));
         }
         if(args.length == 1) {
             PrisonTools.instance.database.setBalance(((Player) sender).getUniqueId().toString(), Double.valueOf(args[0]));
-            sender.sendMessage("Set your balance to &6" + PrisonEco.formatBalance(Double.valueOf(args[0])));
+            sender.sendMessage(Color.addColor("Set your balance to &6" + PrisonEco.formatBalance(Double.valueOf(args[0]))));
         } else if(args.length > 1) {
             try {
                 String target = args[1];
                 if(plugin.cache.isCached(target)) {
                     UUID uuid = plugin.cache.getUUID(target);
                     PrisonTools.instance.database.setBalance(uuid.toString(), Double.valueOf(args[0]));
-                    sender.sendMessage("Set balance of &9" + target + " &rto: &2$&6" + PrisonEco.formatBalance(Double.valueOf(args[0])));
+                    sender.sendMessage(Color.addColor("Set balance of &9" + target + " &rto: &2$&6" + PrisonEco.formatBalance(Double.valueOf(args[0]))));
                 } else {
                     Account account = readJSON("https://api.mojang.com/users/profiles/minecraft/" + target);
                     if(account == null) {
-                        sender.sendMessage("&cCould not find that player! Do they exist?");
+                        sender.sendMessage(Color.addColor("&cCould not find that player! Do they exist?"));
                         return true;
                     }
                     UUID uuid = account.getUUID();
                     if(!Bukkit.getServer().getOfflinePlayer(uuid).hasPlayedBefore()) {
-                        sender.sendMessage("&7That player has not played before!");
+                        sender.sendMessage(Color.addColor("&7That player has not played before!"));
                         return true;
                     }
                     plugin.cache.cache(account.getName(), uuid.toString());
                     PrisonTools.instance.database.setBalance(uuid.toString(), Double.valueOf(args[0]));
-                    sender.sendMessage("Set balance of &9" + target + " &rto: &2$&6" + PrisonEco.formatBalance(Double.valueOf(args[0])));
+                    sender.sendMessage(Color.addColor("Set balance of &9" + target + " &rto: &2$&6" + PrisonEco.formatBalance(Double.valueOf(args[0]))));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
-            sender.sendMessage("Invalid usage of command: /setbalance <amount> [player]");
+            sender.sendMessage(Color.addColor("&cInvalid usage of command: /setbalance <amount> [player]"));
             return true;
         }
         return false;

@@ -38,16 +38,16 @@ public class Home implements CMD {
         int time = plugin.config.getInt("commands.home.cooldown");
         Cooldown cooldown = Util.hasCooldown(cooldowns, player.getUniqueId(), time);
         if(cooldown.hasCooldown()) {
-            player.sendMessage("Please wait " + cooldown.getTimeLeft() + " more seconds before using this command again!");
+            player.sendMessage(Color.addColor("&4Please wait " + cooldown.getTimeLeft() + " more seconds before using this command again!"));
             return true;
         }
         if(plugin.homes.get(player.getUniqueId().toString()) == null) {
-            player.sendMessage("You have not yet set any homes!");
+            player.sendMessage(Color.addColor("&cYou have not yet set any homes!"));
             return true;
         }
         Set<String> playerHomes = plugin.homes.getFile().getConfigurationSection(player.getUniqueId().toString()).getKeys(false);
         if(playerHomes == null) {
-            player.sendMessage("You have not yet set any homes!");
+            player.sendMessage(Color.addColor("&cYou have not yet set any homes!"));
             return true;
         }
         if(args.length == 0) {
@@ -61,7 +61,7 @@ public class Home implements CMD {
         } else {
             String home = args[0].toLowerCase();
             if(!playerHomes.contains(home)) {
-                player.sendMessage("Could not find a home with that name registered to your player!");
+                player.sendMessage(Color.addColor("&cCould not find a home with that name registered to your player!"));
                 return true;
             }
             wait(player, home);
@@ -74,13 +74,13 @@ public class Home implements CMD {
         final String homeName = hName;
         final Player player = p;
 
-        player.sendMessage("Teleporting... Don't move for " + waitTime + " seconds.");
+        player.sendMessage(Color.addColor("&4Teleporting... Don't move for " + waitTime + " seconds."));
         if(!tasks.containsKey(player.getUniqueId())) {
             tasks.put(player.getUniqueId(), new BukkitRunnable() {
                 @Override
                 public void run() {
                     teleport(player, homeName);
-                    player.sendMessage("Teleported you to home '" + homeName + "'");
+                    player.sendMessage(Color.addColor("&eTeleported you to home '" + homeName + "'"));
                     cooldowns.put(player.getUniqueId(), System.currentTimeMillis());
                     tasks.remove(player.getUniqueId());
                 }
